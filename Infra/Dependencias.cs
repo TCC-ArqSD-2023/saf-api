@@ -13,7 +13,10 @@ namespace Infra
         public static void ConfigurarServices(IConfiguration configuration, IServiceCollection services)
         {
             services.AddDbContext<SafDbContexto>(options =>
-                options.UseNpgsql(configuration["ConnectionStrings:SafDbPostgres"]));
+                options.UseNpgsql(configuration["ConnectionStrings:SafDbPostgres"]
+                    //, options => options.MigrationsAssembly("Infra")
+                )
+            );
             services.AddScoped(typeof(IServicoBase<>), typeof(ServicoBase<>));
             services.AddScoped(typeof(IServicoCrudBase<>), typeof(ServicoCrudBase<>));
             services.AddScoped(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
