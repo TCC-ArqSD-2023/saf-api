@@ -1,4 +1,7 @@
-namespace API
+using Infra;
+using Infra.Contextos;
+
+namespace SafAPI
 {
     public class Program
     {
@@ -13,6 +16,8 @@ namespace API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            Dependencias.ConfigurarServices(builder.Configuration, builder.Services);
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -20,6 +25,15 @@ namespace API
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+            }
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                var context = services.GetRequiredService<SafDbContexto>();
+                context.Database.EnsureCreated();
+                // DbInitializer.Initialize(context);
             }
 
             app.UseHttpsRedirection();

@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "API": {
+    "SAF.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

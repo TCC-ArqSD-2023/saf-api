@@ -4,8 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{F0A6FC3B-9C1A-497A-8885-F8E1477C66CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6E40F6CC-F451-4D30-B529-8076E6139104} = {6E40F6CC-F451-4D30-B529-8076E6139104}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{6E40F6CC-F451-4D30-B529-8076E6139104}"
+	ProjectSection(ProjectDependencies) = postProject
+		{20932231-D9AA-4C02-BC42-9EC2DE9CA349} = {20932231-D9AA-4C02-BC42-9EC2DE9CA349}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GisaDominio", "..\GisaDominio\GisaDominio.csproj", "{20932231-D9AA-4C02-BC42-9EC2DE9CA349}"
 EndProject
