@@ -17,6 +17,8 @@ namespace Infra.Contextos
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.HasDefaultSchema("saf");
+
             new AssociadoDbMap(modelBuilder.Entity<Associado>());
             new ConveniadoDbMap(modelBuilder.Entity<Conveniado>());
             new EnderecoDbMap(modelBuilder.Entity<Endereco>());

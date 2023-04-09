@@ -13,6 +13,8 @@ namespace Infra.Contextos.DbMap
         public PrestadorDbMap(EntityTypeBuilder<Prestador> builder)
         {
             builder.HasKey(p => p.Id);
+            builder.HasMany(p => p.Especialidades)
+                .WithMany();
         }
     }
 }

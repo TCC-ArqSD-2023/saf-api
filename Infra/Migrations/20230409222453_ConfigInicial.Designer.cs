@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infra.Migrations
 {
     [DbContext(typeof(SafDbContexto))]
-    [Migration("20230409214349_ConfigInicial")]
+    [Migration("20230409222453_ConfigInicial")]
     partial class ConfigInicial
     {
         /// <inheritdoc />
@@ -20,10 +20,26 @@ namespace Infra.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("saf")
                 .HasAnnotation("ProductVersion", "7.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("EspecialidadePrestador", b =>
+                {
+                    b.Property<long>("EspecialidadesId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("PrestadorId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("EspecialidadesId", "PrestadorId");
+
+                    b.HasIndex("PrestadorId");
+
+                    b.ToTable("EspecialidadePrestador", "saf");
+                });
 
             modelBuilder.Entity("GisaDominio.Entidades.Associado", b =>
                 {
@@ -102,7 +118,7 @@ namespace Infra.Migrations
 
                     b.HasIndex("PlanoId");
 
-                    b.ToTable("Associado");
+                    b.ToTable("Associado", "saf");
                 });
 
             modelBuilder.Entity("GisaDominio.Entidades.Conveniado", b =>
@@ -128,7 +144,7 @@ namespace Infra.Migrations
 
                     b.HasIndex("EnderecoId");
 
-                    b.ToTable("Conveniado");
+                    b.ToTable("Conveniado", "saf");
                 });
 
             modelBuilder.Entity("GisaDominio.Entidades.Endereco", b =>
@@ -168,7 +184,7 @@ namespace Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Endereco");
+                    b.ToTable("Endereco", "saf");
                 });
 
             modelBuilder.Entity("GisaDominio.Entidades.Especialidade", b =>
@@ -183,14 +199,9 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long?>("PrestadorId")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("PrestadorId");
-
-                    b.ToTable("Especialidade");
+                    b.ToTable("Especialidade", "saf");
                 });
 
             modelBuilder.Entity("GisaDominio.Entidades.Plano", b =>
@@ -235,7 +246,7 @@ namespace Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Plano");
+                    b.ToTable("Plano", "saf");
                 });
 
             modelBuilder.Entity("GisaDominio.Entidades.Prestador", b =>
@@ -275,7 +286,22 @@ namespace Infra.Migrations
 
                     b.HasIndex("EnderecoAtendimentoId");
 
-                    b.ToTable("Prestador");
+                    b.ToTable("Prestador", "saf");
+                });
+
+            modelBuilder.Entity("EspecialidadePrestador", b =>
+                {
+                    b.HasOne("GisaDominio.Entidades.Especialidade", null)
+                        .WithMany()
+                        .HasForeignKey("EspecialidadesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GisaDominio.Entidades.Prestador", null)
+                        .WithMany()
+                        .HasForeignKey("PrestadorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("GisaDominio.Entidades.Associado", b =>
@@ -308,13 +334,6 @@ namespace Infra.Migrations
                     b.Navigation("Endereco");
                 });
 
-            modelBuilder.Entity("GisaDominio.Entidades.Especialidade", b =>
-                {
-                    b.HasOne("GisaDominio.Entidades.Prestador", null)
-                        .WithMany("Especialidades")
-                        .HasForeignKey("PrestadorId");
-                });
-
             modelBuilder.Entity("GisaDominio.Entidades.Prestador", b =>
                 {
                     b.HasOne("GisaDominio.Entidades.Endereco", "EnderecoAtendimento")
@@ -324,11 +343,6 @@ namespace Infra.Migrations
                         .IsRequired();
 
                     b.Navigation("EnderecoAtendimento");
-                });
-
-            modelBuilder.Entity("GisaDominio.Entidades.Prestador", b =>
-                {
-                    b.Navigation("Especialidades");
                 });
 #pragma warning restore 612, 618
         }

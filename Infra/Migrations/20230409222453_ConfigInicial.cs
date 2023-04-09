@@ -12,8 +12,12 @@ namespace Infra.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "saf");
+
             migrationBuilder.CreateTable(
                 name: "Endereco",
+                schema: "saf",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -32,7 +36,22 @@ namespace Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Especialidade",
+                schema: "saf",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nome = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Especialidade", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Plano",
+                schema: "saf",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -55,6 +74,7 @@ namespace Infra.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Conveniado",
+                schema: "saf",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -69,6 +89,7 @@ namespace Infra.Migrations
                     table.ForeignKey(
                         name: "FK_Conveniado_Endereco_EnderecoId",
                         column: x => x.EnderecoId,
+                        principalSchema: "saf",
                         principalTable: "Endereco",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -76,6 +97,7 @@ namespace Infra.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Prestador",
+                schema: "saf",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -94,6 +116,7 @@ namespace Infra.Migrations
                     table.ForeignKey(
                         name: "FK_Prestador_Endereco_EnderecoAtendimentoId",
                         column: x => x.EnderecoAtendimentoId,
+                        principalSchema: "saf",
                         principalTable: "Endereco",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -101,6 +124,7 @@ namespace Infra.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Associado",
+                schema: "saf",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -130,58 +154,73 @@ namespace Infra.Migrations
                     table.ForeignKey(
                         name: "FK_Associado_Endereco_EnderecoId",
                         column: x => x.EnderecoId,
+                        principalSchema: "saf",
                         principalTable: "Endereco",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Associado_Plano_PlanoId",
                         column: x => x.PlanoId,
+                        principalSchema: "saf",
                         principalTable: "Plano",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Especialidade",
+                name: "EspecialidadePrestador",
+                schema: "saf",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Nome = table.Column<string>(type: "text", nullable: false),
-                    PrestadorId = table.Column<long>(type: "bigint", nullable: true)
+                    EspecialidadesId = table.Column<long>(type: "bigint", nullable: false),
+                    PrestadorId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Especialidade", x => x.Id);
+                    table.PrimaryKey("PK_EspecialidadePrestador", x => new { x.EspecialidadesId, x.PrestadorId });
                     table.ForeignKey(
-                        name: "FK_Especialidade_Prestador_PrestadorId",
+                        name: "FK_EspecialidadePrestador_Especialidade_EspecialidadesId",
+                        column: x => x.EspecialidadesId,
+                        principalSchema: "saf",
+                        principalTable: "Especialidade",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EspecialidadePrestador_Prestador_PrestadorId",
                         column: x => x.PrestadorId,
+                        principalSchema: "saf",
                         principalTable: "Prestador",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Associado_EnderecoId",
+                schema: "saf",
                 table: "Associado",
                 column: "EnderecoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Associado_PlanoId",
+                schema: "saf",
                 table: "Associado",
                 column: "PlanoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Conveniado_EnderecoId",
+                schema: "saf",
                 table: "Conveniado",
                 column: "EnderecoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Especialidade_PrestadorId",
-                table: "Especialidade",
+                name: "IX_EspecialidadePrestador_PrestadorId",
+                schema: "saf",
+                table: "EspecialidadePrestador",
                 column: "PrestadorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Prestador_EnderecoAtendimentoId",
+                schema: "saf",
                 table: "Prestador",
                 column: "EnderecoAtendimentoId");
         }
@@ -190,22 +229,32 @@ namespace Infra.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Associado");
+                name: "Associado",
+                schema: "saf");
 
             migrationBuilder.DropTable(
-                name: "Conveniado");
+                name: "Conveniado",
+                schema: "saf");
 
             migrationBuilder.DropTable(
-                name: "Especialidade");
+                name: "EspecialidadePrestador",
+                schema: "saf");
 
             migrationBuilder.DropTable(
-                name: "Plano");
+                name: "Plano",
+                schema: "saf");
 
             migrationBuilder.DropTable(
-                name: "Prestador");
+                name: "Especialidade",
+                schema: "saf");
 
             migrationBuilder.DropTable(
-                name: "Endereco");
+                name: "Prestador",
+                schema: "saf");
+
+            migrationBuilder.DropTable(
+                name: "Endereco",
+                schema: "saf");
         }
     }
 }
