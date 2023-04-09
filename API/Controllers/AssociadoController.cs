@@ -1,4 +1,5 @@
-﻿using GisaApiArq.Infra;
+﻿using GisaApiArq.API;
+using GisaApiArq.Infra;
 using GisaDominio.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
