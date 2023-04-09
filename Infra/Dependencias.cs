@@ -1,6 +1,5 @@
-﻿using GisaDominio.Interfaces.Repositorios;
+﻿using GisaApiArq.Infra;
 using Infra.Contextos;
-using Infra.Repositorios;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +14,7 @@ namespace Infra
             services.AddDbContext<SafDbContexto>(options =>
                 options.UseNpgsql(configuration["ConnectionStrings:SafDbPostgres"]));
             services.AddScoped(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
+            services.AddScoped<DbContext, SafDbContexto>();
         }
     }
 }

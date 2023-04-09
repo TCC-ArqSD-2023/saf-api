@@ -20,4 +20,8 @@
     <ProjectReference Include="..\..\GisaDominio\GisaDominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositorios\" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,5 @@
-﻿using GisaDominio.Entidades;
-using GisaDominio.Interfaces.Repositorios;
+﻿using GisaApiArq.Infra;
+using GisaDominio.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SafAPI.Controllers
