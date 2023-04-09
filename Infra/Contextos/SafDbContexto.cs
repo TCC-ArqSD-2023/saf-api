@@ -19,6 +19,7 @@ namespace Infra.Contextos
 
             new AssociadoDbMap(modelBuilder.Entity<Associado>());
             new PlanoDbMap(modelBuilder.Entity<Plano>());
+            new EspecialidadeDbMap(modelBuilder.Entity<Especialidade>());
         }
     }
 }
