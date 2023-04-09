@@ -8,11 +8,9 @@ namespace SafAPI.Controllers
 {
     [ApiController]
     [Route("plano")]
-    public class PlanoController : ControladorBase<Plano>
+    public class PlanoController : ControladorCrudBase<Plano>
     {
-        public PlanoController(IRepositorioBase<Plano> repositorio, ILogger<ControladorBase<Plano>> logger) : base(repositorio, logger)
-        {
-        }
+        public PlanoController(IRepositorioCrudBase<Plano> repositorio, ILogger<PlanoController> logger) : base(repositorio, logger) { }
 
         //[HttpGet]
         //public IActionResult NovoPlano()

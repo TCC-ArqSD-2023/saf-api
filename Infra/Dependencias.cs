@@ -14,6 +14,7 @@ namespace Infra
             services.AddDbContext<SafDbContexto>(options =>
                 options.UseNpgsql(configuration["ConnectionStrings:SafDbPostgres"]));
             services.AddScoped(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
+            services.AddScoped(typeof(IRepositorioCrudBase<>), typeof(RepositorioCrudBase<>));
             services.AddScoped<DbContext, SafDbContexto>();
         }
     }
