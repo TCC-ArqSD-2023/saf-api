@@ -1,5 +1,6 @@
 ﻿using GisaApiArq.API;
 using GisaApiArq.Infra;
+using GisaApiArq.Servicos;
 using GisaDominio.Entidades;
 using GisaDominio.Enum;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,9 @@ namespace SafAPI.Controllers
     [Route("plano")]
     public class PlanoController : ControladorCrudBase<Plano>
     {
-        public PlanoController(IRepositorioCrudBase<Plano> repositorio, ILogger<PlanoController> logger) : base(repositorio, logger) { }
+        public PlanoController(ILogger<PlanoController> logger, IServicoCrudBase<Plano> servico) : base(logger, servico)
+        {
+        }
 
         //[HttpGet]
         //public IActionResult NovoPlano()

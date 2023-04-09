@@ -1,5 +1,6 @@
 ﻿using GisaApiArq.API;
 using GisaApiArq.Infra;
+using GisaApiArq.Servicos;
 using GisaDominio.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +10,7 @@ namespace SafAPI.Controllers
     [Route("associado")]
     public class AssociadoController : ControladorCrudBase<Associado>
     {
-        public AssociadoController(IRepositorioCrudBase<Associado> repositorio, ILogger<AssociadoController> logger) : base(repositorio, logger)
+        public AssociadoController(ILogger<AssociadoController> logger, IServicoCrudBase<Associado> servico) : base(logger, servico)
         {
         }
     }
