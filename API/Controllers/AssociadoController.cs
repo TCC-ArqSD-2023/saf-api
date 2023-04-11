@@ -8,7 +8,7 @@ namespace SafAPI.Controllers
 {
     [ApiController]
     [Route("associado")]
-    public class AssociadoController : ControladorCrudBase<Associado>
+    public class AssociadoController : ControladorCrudBase<Associado, Associado>
     {
         public AssociadoController(ILogger<AssociadoController> logger, IServicoCrudBase<Associado> servico) : base(logger, servico)
         {

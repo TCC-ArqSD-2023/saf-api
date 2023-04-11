@@ -7,7 +7,7 @@ namespace SafAPI.Controllers
 {
     [ApiController]
     [Route("especialidade")]
-    public class EspecialidadeController : ControladorCrudBase<Especialidade>
+    public class EspecialidadeController : ControladorCrudBase<Especialidade, Especialidade>
     {
         public EspecialidadeController(ILogger<EspecialidadeController> logger, IServicoCrudBase<Especialidade> servico) : base(logger, servico)
         {

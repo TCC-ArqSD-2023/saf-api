@@ -9,7 +9,7 @@ namespace SafAPI.Controllers
 {
     [ApiController]
     [Route("plano")]
-    public class PlanoController : ControladorCrudBase<Plano>
+    public class PlanoController : ControladorCrudBase<Plano, Plano>
     {
         public PlanoController(ILogger<PlanoController> logger, IServicoCrudBase<Plano> servico) : base(logger, servico)
         {

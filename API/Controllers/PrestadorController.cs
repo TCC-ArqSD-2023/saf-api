@@ -7,7 +7,7 @@ namespace SafAPI.Controllers
 {
     [ApiController]
     [Route("prestador")]
-    public class PrestadorController : ControladorCrudBase<Prestador>
+    public class PrestadorController : ControladorCrudBase<Prestador, Prestador>
     {
         public PrestadorController(ILogger<PrestadorController> logger, IServicoCrudBase<Prestador> servico) : base(logger, servico)
         {
