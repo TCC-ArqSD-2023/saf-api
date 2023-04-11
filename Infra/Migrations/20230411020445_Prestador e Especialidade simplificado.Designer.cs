@@ -3,6 +3,7 @@ using System;
 using Infra.Contextos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infra.Migrations
 {
     [DbContext(typeof(SafDbContexto))]
-    partial class SafDbContextoModelSnapshot : ModelSnapshot
+    [Migration("20230411020445_Prestador e Especialidade simplificado")]
+    partial class PrestadoreEspecialidadesimplificado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,7 +248,7 @@ namespace Infra.Migrations
                     b.Property<long>("EnderecoAtendimentoId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("EspecialidadeId")
+                    b.Property<long>("EspecialidadesId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Nome")
@@ -271,7 +274,7 @@ namespace Infra.Migrations
 
                     b.HasIndex("EnderecoAtendimentoId");
 
-                    b.HasIndex("EspecialidadeId");
+                    b.HasIndex("EspecialidadesId");
 
                     b.ToTable("Prestador", "saf");
                 });
@@ -314,15 +317,15 @@ namespace Infra.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GisaDominio.Entidades.Especialidade", "Especialidade")
+                    b.HasOne("GisaDominio.Entidades.Especialidade", "Especialidades")
                         .WithMany()
-                        .HasForeignKey("EspecialidadeId")
+                        .HasForeignKey("EspecialidadesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("EnderecoAtendimento");
 
-                    b.Navigation("Especialidade");
+                    b.Navigation("Especialidades");
                 });
 #pragma warning restore 612, 618
         }
