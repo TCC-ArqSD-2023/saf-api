@@ -1,6 +1,8 @@
 ﻿using GisaApiArq.Infra;
 using GisaApiArq.Servicos;
+using GisaDominio.Entidades;
 using Infra.Contextos;
+using Infra.Repositorios;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions;
 using Microsoft.Extensions.Configuration;
@@ -12,13 +14,15 @@ namespace Infra
     {
         public static void ConfigurarServices(IConfiguration configuration, IServiceCollection services)
         {
+            var connString = configuration["ConnectionStrings:SafDbSqlServer"];
             services.AddDbContext<SafDbContexto>(options =>
-                options.UseNpgsql(configuration["ConnectionStrings:SafDbPostgres"]
-                    //, options => options.MigrationsAssembly("Infra")
-                )
+                options
+                //.UseLazyLoadingProxies()
+                .UseSqlServer(connString)
             );
             services.AddScoped(typeof(IServicoBase<>), typeof(ServicoBase<>));
             services.AddScoped(typeof(IServicoCrudBase<>), typeof(ServicoCrudBase<>));
+            services.AddScoped(typeof(IRepositorioCrudBase<Prestador>), typeof(PrestadorRepositorio));
             services.AddScoped(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
             services.AddScoped(typeof(IRepositorioCrudBase<>), typeof(RepositorioCrudBase<>));
             services.AddScoped<DbContext, SafDbContexto>();

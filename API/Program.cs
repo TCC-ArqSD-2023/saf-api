@@ -1,5 +1,4 @@
 using Infra;
-using Infra.Contextos;
 
 namespace SafAPI
 {
@@ -15,6 +14,8 @@ namespace SafAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             Dependencias.ConfigurarServices(builder.Configuration, builder.Services);
 

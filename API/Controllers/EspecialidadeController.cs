@@ -1,4 +1,5 @@
-﻿using GisaApiArq.API;
+﻿using AutoMapper;
+using GisaApiArq.API;
 using GisaApiArq.Servicos;
 using GisaDominio.Entidades;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ namespace SafAPI.Controllers
     [Route("especialidade")]
     public class EspecialidadeController : ControladorCrudBase<Especialidade, Especialidade>
     {
-        public EspecialidadeController(ILogger<EspecialidadeController> logger, IServicoCrudBase<Especialidade> servico) : base(logger, servico)
+        public EspecialidadeController(ILogger<EspecialidadeController> logger, IServicoCrudBase<Especialidade> servico, IMapper mapper) : base(logger, servico, mapper)
         {
         }
     }

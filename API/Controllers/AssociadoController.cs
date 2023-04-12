@@ -1,4 +1,5 @@
-﻿using GisaApiArq.API;
+﻿using AutoMapper;
+using GisaApiArq.API;
 using GisaApiArq.Infra;
 using GisaApiArq.Servicos;
 using GisaDominio.Entidades;
@@ -10,7 +11,7 @@ namespace SafAPI.Controllers
     [Route("associado")]
     public class AssociadoController : ControladorCrudBase<Associado, Associado>
     {
-        public AssociadoController(ILogger<AssociadoController> logger, IServicoCrudBase<Associado> servico) : base(logger, servico)
+        public AssociadoController(ILogger<AssociadoController> logger, IServicoCrudBase<Associado> servico, IMapper mapper) : base(logger, servico, mapper)
         {
         }
     }

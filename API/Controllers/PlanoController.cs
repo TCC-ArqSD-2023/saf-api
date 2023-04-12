@@ -1,4 +1,5 @@
-﻿using GisaApiArq.API;
+﻿using AutoMapper;
+using GisaApiArq.API;
 using GisaApiArq.Infra;
 using GisaApiArq.Servicos;
 using GisaDominio.Entidades;
@@ -11,7 +12,7 @@ namespace SafAPI.Controllers
     [Route("plano")]
     public class PlanoController : ControladorCrudBase<Plano, Plano>
     {
-        public PlanoController(ILogger<PlanoController> logger, IServicoCrudBase<Plano> servico) : base(logger, servico)
+        public PlanoController(ILogger<PlanoController> logger, IServicoCrudBase<Plano> servico, IMapper mapper) : base(logger, servico, mapper)
         {
         }
 
