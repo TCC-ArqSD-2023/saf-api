@@ -22,7 +22,6 @@ namespace Infra.Contextos.DbMap
             builder.HasOne(a => a.Plano)
                 .WithMany()
                 .HasForeignKey(a => a.PlanoId)
-                .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
