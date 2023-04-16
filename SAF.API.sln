@@ -15,6 +15,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{42339D20-C752-4DF1-9D02-1569F55D038A}"
 	ProjectSection(SolutionItems) = preProject
 		nuget.config = nuget.config
+		.github\workflows\SafApi.yml = .github\workflows\SafApi.yml
 	EndProjectSection
 EndProject
 Global
