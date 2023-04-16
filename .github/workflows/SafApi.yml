@@ -18,6 +18,10 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+    - name: Configurar nuget
+      run: dotnet nuget add source https://nuget.pkg.github.com/TCC-ArqSD-2023/index.json -n github -u dinobri -p ${DINOBRIPAT_NUGET} --store-password-in-clear-text
+      env:
+        DINOBRIPAT_NUGET: ${{ secrets.DINOBRIPAT_NUGET }}
     - name: Restore
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
     - name: Build
