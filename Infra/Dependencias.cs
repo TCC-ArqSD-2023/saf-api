@@ -3,6 +3,7 @@ using GisaApiArq.Servicos;
 using GisaDominio.Entidades;
 using Infra.Contextos;
 using Infra.Repositorios;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +16,9 @@ namespace Infra
         public static void ConfigurarServices(IConfiguration configuration, IServiceCollection services)
         {
             var connString = configuration["ConnectionStrings:SafDbSqlServer"];
+            
+            connString += configuration["DbSenha"];
+
             services.AddDbContext<SafDbContexto>(options =>
                 options
                 //.UseLazyLoadingProxies()
