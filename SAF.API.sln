@@ -6,27 +6,16 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{F0A6FC3B-9C1A-497A-8885-F8E1477C66CC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{6E40F6CC-F451-4D30-B529-8076E6139104} = {6E40F6CC-F451-4D30-B529-8076E6139104}
-		{EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2} = {EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{6E40F6CC-F451-4D30-B529-8076E6139104}"
-	ProjectSection(ProjectDependencies) = postProject
-		{20932231-D9AA-4C02-BC42-9EC2DE9CA349} = {20932231-D9AA-4C02-BC42-9EC2DE9CA349}
-		{EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2} = {EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2}
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GisaDominio", "..\GisaDominio\GisaDominio.csproj", "{20932231-D9AA-4C02-BC42-9EC2DE9CA349}"
-	ProjectSection(ProjectDependencies) = postProject
-		{EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2} = {EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servicos", "Servicos\Servicos.csproj", "{A615FA74-6239-46CE-A91A-3103C132D7AC}"
-	ProjectSection(ProjectDependencies) = postProject
-		{20932231-D9AA-4C02-BC42-9EC2DE9CA349} = {20932231-D9AA-4C02-BC42-9EC2DE9CA349}
-		{EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2} = {EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2}
-	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GisaApiArq", "..\GisaApiArq\GisaApiArq.csproj", "{EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{42339D20-C752-4DF1-9D02-1569F55D038A}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,18 +31,10 @@ Global
 		{6E40F6CC-F451-4D30-B529-8076E6139104}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E40F6CC-F451-4D30-B529-8076E6139104}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E40F6CC-F451-4D30-B529-8076E6139104}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20932231-D9AA-4C02-BC42-9EC2DE9CA349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20932231-D9AA-4C02-BC42-9EC2DE9CA349}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20932231-D9AA-4C02-BC42-9EC2DE9CA349}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20932231-D9AA-4C02-BC42-9EC2DE9CA349}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A615FA74-6239-46CE-A91A-3103C132D7AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A615FA74-6239-46CE-A91A-3103C132D7AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A615FA74-6239-46CE-A91A-3103C132D7AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A615FA74-6239-46CE-A91A-3103C132D7AC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EBA4AEEE-453B-4033-8AA8-EF4B71DFF6C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

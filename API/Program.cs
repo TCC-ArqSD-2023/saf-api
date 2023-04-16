@@ -17,25 +17,18 @@ namespace SafAPI
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            //builder.Configuration.AddUserSecrets<Program>(true);
+
             Dependencias.ConfigurarServices(builder.Configuration, builder.Services);
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
+            //}
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
-
-            //using (var scope = app.Services.CreateScope())
-            //{
-            //    var services = scope.ServiceProvider;
-
-            //    var context = services.GetRequiredService<SafDbContexto>();
-            //    context.Database.EnsureCreated();
-            //    // DbInitializer.Initialize(context);
-            //}
 
             app.UseHttpsRedirection();
 
