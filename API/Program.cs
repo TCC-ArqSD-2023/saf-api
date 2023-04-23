@@ -1,4 +1,5 @@
-using Infra;
+
+using Servicos;
 
 namespace SafAPI
 {
@@ -19,6 +20,7 @@ namespace SafAPI
 
             //builder.Configuration.AddUserSecrets<Program>(true);
 
+            //Infra.Dependencias.ConfigurarServices(builder.Configuration, builder.Services);
             Dependencias.ConfigurarServices(builder.Configuration, builder.Services);
 
             var app = builder.Build();

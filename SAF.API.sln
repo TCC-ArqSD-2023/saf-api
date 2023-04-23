@@ -6,11 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{F0A6FC3B-9C1A-497A-8885-F8E1477C66CC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{6E40F6CC-F451-4D30-B529-8076E6139104} = {6E40F6CC-F451-4D30-B529-8076E6139104}
+		{A615FA74-6239-46CE-A91A-3103C132D7AC} = {A615FA74-6239-46CE-A91A-3103C132D7AC}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{6E40F6CC-F451-4D30-B529-8076E6139104}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servicos", "Servicos\Servicos.csproj", "{A615FA74-6239-46CE-A91A-3103C132D7AC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6E40F6CC-F451-4D30-B529-8076E6139104} = {6E40F6CC-F451-4D30-B529-8076E6139104}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{42339D20-C752-4DF1-9D02-1569F55D038A}"
 	ProjectSection(SolutionItems) = preProject
