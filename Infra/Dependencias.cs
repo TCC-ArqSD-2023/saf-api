@@ -18,8 +18,6 @@ namespace Infra
             var connString = configuration["ConnectionStrings:SafDbSqlServer"];
             connString += configuration["DbSenha"];
 
-            Console.WriteLine(connString);
-
             services.AddDbContext<SafDbContexto>(options =>
                 options
                 //.UseLazyLoadingProxies()
